@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Giao Hàng và Đặt Hàng Thành Công</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffe8cc; /* Màu cam nhạt */
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #f0ad4e; /* Màu cam rực rỡ */
+            border-radius: 5px;
+            background-color: #fff3e6; /* Màu nền cam nhạt */
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Đổ bóng nhẹ */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #f0ad4e; /* Màu cam rực rỡ cho các nhãn */
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #f0ad4e; /* Viền màu cam rực rỡ */
+            border-radius: 5px;
+            background-color: #fff; /* Nền trắng */
+            color: #333; /* Màu chữ đậm */
+        }
+        .btn {
+            background-color: #f0ad4e; /* Màu cam rực rỡ cho nút */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #ec971f; /* Màu cam nhạt khi di chuột */
+        }
+        .success-message {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda; /* Màu xanh nhạt cho thông báo thành công */
+            border-color: #c3e6cb;
+            color: #155724;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: #f0ad4e;">Thông Tin Giao Hàng</h2>
+        <form id="order-form">
+            <div class="form-group">
+                <label for="name">Họ và Tên:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Địa Chỉ:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số Điện Thoại:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <button type="submit" class="btn">Đặt Hàng</button>
+        </form>
+        <div class="success-message" id="success-message">
+            <p>Đơn hàng của bạn đã được đặt thành công!</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('order-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Lấy thông tin từ form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            
+            // Kiểm tra nếu các trường đều đã được điền
+            if (name && email && address && phone) {
+                // Hiển thị thông báo đặt hàng thành công
+                document.getElementById('success-message').style.display = 'block';
+
+                // Đặt hàng thành công, bạn có thể thực hiện các thao tác khác ở đây, ví dụ lưu vào cơ sở dữ liệu, gửi email xác nhận, vv.
+                
+                // Reset form sau khi đặt hàng thành công (tùy ý bạn có thể không reset)
+                document.getElementById('order-form').reset();
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin để đặt hàng.');
+            }
+        });
+    </script>
+</body>
+</html>
